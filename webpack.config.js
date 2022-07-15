@@ -7,15 +7,16 @@ const path = require('path');
 //@ts-check
 /** @typedef {import('webpack').Configuration} WebpackConfig **/
 
+
 /** @type WebpackConfig */
-const extensionConfig = {
+module.exports  = {
   target: 'node', // vscode extensions run in a Node.js-context 📖 -> https://webpack.js.org/configuration/node/
-	mode: 'none', // this leaves the source code as close as possible to the original (when packaging we set this to 'production')
+	mode: 'production', // this leaves the source code as close as possible to the original (when packaging we set this to 'production')
 
   entry: './src/extension.ts', // the entry point of this extension, 📖 -> https://webpack.js.org/configuration/entry-context/
   output: {
     // the bundle is stored in the 'dist' folder (check package.json), 📖 -> https://webpack.js.org/configuration/output/
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'out'),
     filename: 'extension.js',
     libraryTarget: 'commonjs2'
   },
@@ -35,6 +36,12 @@ const extensionConfig = {
         use: [
           {
             loader: 'ts-loader'
+          },
+          {
+            loader: 'vscode-nls-dev/lib/webpack-loader',
+            options: {
+              base: path.join(__dirname, 'src')
+            }
           }
         ]
       }
@@ -45,4 +52,4 @@ const extensionConfig = {
     level: "log", // enables logging required for problem matchers
   },
 };
-module.exports = [ extensionConfig ];
+// module.exports = [ extensionConfig ];
