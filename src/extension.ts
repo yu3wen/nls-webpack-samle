@@ -2,8 +2,9 @@
 // Import the module and reference it with the alias vscode in your code below
 
 
-const nls= require('vscode-nls');
-// import * as nls from 'vscode-nls';  //use import need babel
+// const nls= require('vscode-nls');
+// import nls = require('vscode-nls');
+import * as nls from 'vscode-nls';  //use import need babel
 const localize = nls.config({ messageFormat: nls.MessageFormat.both,bundleFormat: nls.BundleFormat.standalone })();
 import * as vscode from 'vscode';
 import { foodCommand } from './template/food';

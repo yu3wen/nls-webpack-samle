@@ -1,5 +1,6 @@
 
-const nls= require('vscode-nls');
+// const nls= require('vscode-nls');
+import * as nls from 'vscode-nls';
 
 const localize = nls.loadMessageBundle();
 import * as vscode from 'vscode';

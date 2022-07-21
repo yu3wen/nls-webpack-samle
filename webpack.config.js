@@ -34,9 +34,8 @@ module.exports  = {
         test: /\.ts$/,
         exclude: /node_modules/,
         use: [
-          {
-            loader: 'ts-loader'
-          },
+          'babel-loader',
+          // 'ts-loader',
           {
             loader: 'vscode-nls-dev/lib/webpack-loader',
             options: {
@@ -44,7 +43,8 @@ module.exports  = {
             }
           }
         ]
-      }
+      },
+
     ]
   },
   devtool: 'nosources-source-map',
